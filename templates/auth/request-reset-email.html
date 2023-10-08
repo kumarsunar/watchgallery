@@ -1,0 +1,60 @@
+
+
+{% block style %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+{% endblock style %}
+
+
+{% block body %}
+<section id="contact" class="contact">
+    <div class="container">
+
+      <div class="section-title" data-aos="fade-up">
+
+<br>
+<br>
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+<h1 data-aos="fade-up">Request a Reset Link</h1>
+<div class="container" data-aos="fade-up" data-aos-delay="400"></div>
+
+    {% for message in messages %}
+
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+  <strong></strong>{{ message }}
+ <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    {% comment %} <span aria-hidden="true">&times;</span> {% endcomment %}
+  </button></div>
+  {% endfor %}
+
+
+<form action="/watchauth/request-reset-email" method="post">{% csrf_token %}
+
+<label for="lname">Email</label>
+<div class="form-group">
+<input type="email" class="form-control" id="email" name="email" required>
+</div><br>
+
+<button type="submit" class="btn btn-primary btn-sm btn-block">Submit</button>
+<br>
+<hr>
+<a href="/watchauth/login/">Go Back?</a><br><br>
+</form>
+</div>
+    </div>
+    <div class="col-md-6"></div>
+</div>
+</div>
+</section>
+
+
+
+
+        
+{% endblock body %}
+
+
+
+

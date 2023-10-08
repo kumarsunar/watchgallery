@@ -1,0 +1,262 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>The watch gallery - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Vesperr
+  * Updated: Mar 10 2023 with Bootstrap v5.2.3
+  * Template URL: https://bootstrapmade.com/vesperr-free-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div class="logo">
+        
+      <a href=""><img src="{% static 'assets/img/logo.png' %}" alt="" id="logo" ></a>
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="/">Home</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'watchauth:about' %}">About</a></li>
+
+
+
+          <li><a class="nav-link scrollto" href="{% url 'watchauth:repair_request' %}">Repair</a></li>
+
+          {% comment %} <li><a class="nav-link scrollto" href="{% url 'watchauth:checkout' %}">Checkout</a></li> {% endcomment %}
+
+
+          <li>
+            {% comment %} <form enctype="multipart/form-data" method="post" role="product_page">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-success" href="{% url 'payment:product_page' %}" data-bind-href="pricing">Payment</button>
+            </form> {% endcomment %}
+            
+
+          </li>
+          {% comment %} <div class="container home_msg">
+            {% if user.is_authenticated %}
+              <form enctype="multipart/form-data" method="post" role="product_page">
+              {% csrf_token %}
+                <h2>Hi {{ user }}! To pay, click on this button <button type="submit" class="btn btn-success" href="{% url 'payment:product_page' %}" data-bind-href="pricing">Payment</button></h2>
+              </form>
+            {% else %}
+              <h2>You're not logged in...</h2><a href="{% url 'login' %}" class="btn btn-secondary">Log in</a>
+        
+            {% endif %}
+          </div> {% endcomment %}
+        
+
+          
+          <li>
+            <div class="dropdown">
+              <button class="dropbtn">Brands</button>
+              <div class="dropdown-content">
+                {% comment %} auto brand input {% endcomment %}
+                {% for product, range, nSlides in allProds %}
+                  <div class="container">
+                    <a href="#{{ product.0.category }}">{{ product.0.category }} </h3></a>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </li>
+          <form method="GET" action="{% url 'watchauth:product_search' %}">
+            <input type="text" name="query" placeholder="Search...">
+            <button type="submit">Search</button>
+        </form>
+        
+            
+          
+        
+          
+          {%if not user.is_authenticated %}
+           <li><a class="nav-link scrollto" href="/watchauth/login/">SignIn</a></li>
+          {% endif %}
+
+          {% if user.is_authenticated %} 
+
+            {% comment %} <button type="button" class="btn btn-dark ml-3" id="popcart" data-container="body"
+            data-toggle="popover" data-placement="bottom" data-html="true" data-content="Vivamus
+            sagittis lacus vel augue laoreet rutrum faucibus.">
+            Cart(<span id="cart">0</span>)
+            </button>              {% endcomment %}
+            <li><a class="getstarted scrollto" href="#about">Welcome{{user.username}}</a></li>
+            {% comment %} <li><a class="nav-link scrollto" href="/watchauth/login/">logout</a></li> {% endcomment %}
+            <li><a class="nav-link scrollto" href="{% url 'watchauth:logout' %}">logout</a></li>
+
+          {% endif %}  
+    
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <section id="contact" class="contact">
+        <div class="container">
+  
+          <div class="section-title" data-aos="fade-up">
+            <h2>About us</h2>
+          </div>
+  
+          <div class="row">
+  
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+              <div class="contact-about">
+                <h3>Watch</h3>
+                <p>The watch gallery is a haven for timepiece enthusiasts and collectors alike. It is a space where the artistry and precision of watchmaking are showcased, allowing individuals to immerse themselves in the world of horology.</p>
+                <div class="social-links">
+                    <a href="https://twitter.com/yourusername" class="twitter"><i class="bi bi-twitter"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100079650722441" class="facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="https://instagram.com/yourusername" class="instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="https://linkedin.com/in/yourusername" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                  </div>
+              </div>
+            </div>
+  
+            <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
+              <div class="info">
+                <div>
+                  <i class="ri-map-pin-line"></i>
+                  <p>New Baneshowr<br>Kathmandu, Nepal</p>
+                </div>
+  
+                <div>
+                  <i class="ri-mail-send-line"></i>
+                  <p>Watchgallery@gmail.com</p>
+                </div>
+  
+                <div>
+                  <i class="ri-phone-line"></i>
+                  <p>+977-9807497538</p>
+                </div>
+  
+              </div>
+            </div>
+  
+            <div class="col-lg-5 col-md-12" data-aos="fade-up" data-aos-delay="300">
+              <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                <div class="form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                </div>
+                <div class="my-3">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
+                </div>
+                <div class="text-center"><button type="submit">Send Message</button></div>
+              </form>
+            </div>
+  
+          </div>
+  
+        </div>
+      </section><!-- End Contact Section -->
+  
+    </main><!-- End #main -->
+  
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+      <div class="container">
+        <div class="row d-flex align-items-center">
+          <div class="col-lg-6 text-lg-left text-center">
+            <div class="copyright">
+              &copy; Copyright <strong>Watch Gallery</strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+             
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
+              <a href="#intro" class="scrollto">Home</a>
+              <a href="#about" class="scrollto">About</a>
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Use</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </footer><!-- End Footer -->
+  
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  
+  
+    
+    
+  
+  
+    <!-- Vendor JS Files -->
+    <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+    <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  
+    <!-- Template Main JS File -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+  
+  
+     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    
+ 
+  
+  
+  </body>
+  
+  </html>
+</body>
+</html> 

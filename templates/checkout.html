@@ -1,0 +1,111 @@
+{% load static %}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="{% static 'checkout.css' %}">
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="text-center">Checkout</h1>
+        </div>
+        <div class="card-body">
+          <div class="mb-4">
+            <h5 class="font-weight-bold">Product Details</h5>
+            <hr>
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <img src="{{ product.image.url }}" alt="Product Image" class="img-fluid w-100" style="max-width: 200px;">
+              </div>
+              <div class="pl-4">
+                <h6 class="mb-0">{{ product.product_name }}</h6>
+                <p class="text-muted">Quantity:
+                  <input type="number" name="quantity" value="1" min="1" class="quantity-input">
+                </p>
+              </div>
+              <div>
+                
+                <p class="total-price mb-0">{{ product.price }}</p> <!-- Display total price here -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <form enctype="multipart/form-data" method="post" role="product_page">
+            {% csrf_token %}
+            <input type="hidden" name="quantity" id="hidden-quantity" value="1">
+            <button type="submit" class="btn btn-primary btn-block">Payment</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    $(".quantity-input").change(function () {
+      var quantity = $(this).val();
+      var unitPrice = parseFloat("{{ product.price }}"); // Convert string to number
+      var totalPrice = quantity * unitPrice;
+      
+      $("#hidden-quantity").val(quantity); // Update hidden field
+      $(".total-price").text(totalPrice.toFixed(2)); // Update total price display
+    });
+  });
+</script>
+
+
+
+
+
+
+<style>
+  /* checkout.css */
+
+body {
+  background-color: #f8f9fa;
+}
+
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card-header {
+  background-color: #007bff;
+  color: #fff;
+  padding: 20px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-body h5 {
+  margin-bottom: 20px;
+}
+
+.card-footer {
+  background-color: #f8f9fa;
+  border-top: none;
+  text-align: center;
+}
+
+.card-footer button {
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 30px;
+  border-radius: 30px;
+}
+
+</style>  
+
+

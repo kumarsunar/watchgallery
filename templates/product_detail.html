@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product Details</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    .similar-products {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .similar-product {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .similar-product img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border: 5px solid #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      border-radius: 50%;
+      transition: transform 0.3s;
+    }
+
+    .similar-product img:hover {
+      transform: scale(1.1);
+    }
+
+    .similar-product .product-name {
+      margin-top: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Product Details</h1>
+
+    <style>
+        .table img {
+          max-width: 300px;
+          max-height: 300px;
+        }
+      </style>
+      
+      <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Product Price</th>
+            <th scope="col">Product Description</th>
+            <th scope="col">Image</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.desc }}</td>
+            <td><img src="{{ product.image.url }}" alt="Product Image" class="img-thumbnail"></td>
+          </tr>
+        </tbody>
+      </table>
+      
+      
+      
+      <h2>Similar Products</h2>
+      <div class="similar-products">
+        {% for similar_product in similar_products %}
+          <div class="similar-product">
+            <img src="{{ similar_product.image.url }}" alt="" srcset="" class="img-fluid">
+            <div class="product-name">{{ similar_product.product_name }}</div>
+            <div class="product-price">{{ similar_product.price }}</div>
+            {% comment %} <a href="{{ similar_product.buy_now_link }}" class="buy-now-button">Buy Now</a> {% endcomment %}
+            <button type="submit" class="btn btn-success cart btn-sm mt-0">Buy now</button>
+          </div>
+        {% endfor %}
+      </div>
+      
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+

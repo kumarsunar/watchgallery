@@ -1,0 +1,6 @@
+{% autoescape off %}
+hello{{user.username}}
+please click this link below to verify your Account
+http://{{domain}}{% url 'watchauth:activate' uidb64=uid token=token %}
+
+{% endautoescape %}
